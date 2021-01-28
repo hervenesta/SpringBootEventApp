@@ -11,7 +11,7 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
-    private long id;
+    private long eventId;
 
     @NotBlank(message = "can't be empty")
     @Column(name = "event_name")
@@ -28,16 +28,27 @@ public class Event {
 
     private String duration;
 
+//    @OneToMany(mappedBy = "event")
+//    private List<Subscription> subscriptions = new ArrayList<>();
+
     public Event() {
     }
 
-    public long getId() {
-        return id;
+    public long getEventId() {
+        return eventId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEventId(long eventId) {
+        this.eventId = eventId;
     }
+
+//    public List<Subscription> getSubscriptions() {
+//        return subscriptions;
+//    }
+//
+//    public void setSubscriptions(List<Subscription> subscriptions) {
+//        this.subscriptions = subscriptions;
+//    }
 
     public String getName() {
         return name;

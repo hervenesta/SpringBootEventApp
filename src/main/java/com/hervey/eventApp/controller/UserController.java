@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -23,7 +25,7 @@ public class UserController {
     private MapValidationErrorService mapValidationErrorService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user, BindingResult result){
+    public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result){
         ResponseEntity<?> err = mapValidationErrorService.MapValidation(result);
         if(err != null){
             return err;

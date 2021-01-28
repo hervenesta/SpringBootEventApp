@@ -1,6 +1,7 @@
 package com.hervey.eventApp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
@@ -8,13 +9,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private long id;
+
+    @NotBlank(message = "can't be empty")
     private String username;
+
+    @NotBlank(message = "can't be empty")
     private String email;
+
     private String phoneNumber;
+
+    @NotBlank(message = "can't be empty")
     private String password;
 
+    @NotBlank(message = "can't be empty")
     @Transient
     private String confirmPass;
+
+//    @OneToMany(mappedBy = "user")
+//    private List<Subscription> subscriptions = new ArrayList<>();
 
     public User() {
     }
